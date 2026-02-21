@@ -1,5 +1,8 @@
 package org.practical;
 
+import org.practical.DI.GoodCode.EmailService;
+import org.practical.DI.GoodCode.NotificationService;
+import org.practical.DI.GoodCode.SMSService;
 import org.practical.LSP.ReadonlyFile;
 import org.practical.LSP.WriteableFile;
 import org.practical.OCP.Creditcard;
@@ -11,12 +14,8 @@ import org.practical.OCP.UPI;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        ReadonlyFile rf = new ReadonlyFile();
-        rf.read();
-
-        WriteableFile wf = new WriteableFile();
-        wf.write();
-        wf.read();
+        NotificationService notificationService = new NotificationService(new SMSService());
+        notificationService.NotifyCustomer();
 
     }
 }
